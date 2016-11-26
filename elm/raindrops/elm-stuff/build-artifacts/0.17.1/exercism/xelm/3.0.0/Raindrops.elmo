@@ -1,0 +1,52 @@
+var _exercism$xelm$Raindrops$by = F2(
+	function (divisor, n) {
+		return _elm_lang$core$Native_Utils.eq(
+			A2(_elm_lang$core$Basics_ops['%'], n, divisor),
+			0);
+	});
+var _exercism$xelm$Raindrops$buildString = F2(
+	function (divisors, num) {
+		buildString:
+		while (true) {
+			var _p0 = divisors;
+			if (_p0.ctor === '[]') {
+				return '';
+			} else {
+				var _p2 = _p0._1;
+				var _p1 = _p0._0;
+				if (A2(_exercism$xelm$Raindrops$by, 3, num) && _elm_lang$core$Native_Utils.eq(_p1, 3)) {
+					return A2(
+						_elm_lang$core$Basics_ops['++'],
+						'Pling',
+						A2(_exercism$xelm$Raindrops$buildString, _p2, num));
+				} else {
+					if (A2(_exercism$xelm$Raindrops$by, 5, num) && _elm_lang$core$Native_Utils.eq(_p1, 5)) {
+						return A2(
+							_elm_lang$core$Basics_ops['++'],
+							'Plang',
+							A2(_exercism$xelm$Raindrops$buildString, _p2, num));
+					} else {
+						if (A2(_exercism$xelm$Raindrops$by, 7, num) && _elm_lang$core$Native_Utils.eq(_p1, 7)) {
+							return A2(
+								_elm_lang$core$Basics_ops['++'],
+								'Plong',
+								A2(_exercism$xelm$Raindrops$buildString, _p2, num));
+						} else {
+							var _v1 = _p2,
+								_v2 = num;
+							divisors = _v1;
+							num = _v2;
+							continue buildString;
+						}
+					}
+				}
+			}
+		}
+	});
+var _exercism$xelm$Raindrops$raindrops = function (n) {
+	return (A2(_exercism$xelm$Raindrops$by, 3, n) || (A2(_exercism$xelm$Raindrops$by, 5, n) || A2(_exercism$xelm$Raindrops$by, 7, n))) ? A2(
+		_exercism$xelm$Raindrops$buildString,
+		_elm_lang$core$Native_List.fromArray(
+			[3, 5, 7]),
+		n) : _elm_lang$core$Basics$toString(n);
+};

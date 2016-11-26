@@ -1,0 +1,12 @@
+var _exercism$xelm$Accumulate$accumulate = F2(
+	function (theFunc, list) {
+		var _p0 = list;
+		if (_p0.ctor === '[]') {
+			return list;
+		} else {
+			return A2(
+				_elm_lang$core$List_ops['::'],
+				theFunc(_p0._0),
+				A2(_exercism$xelm$Accumulate$accumulate, theFunc, _p0._1));
+		}
+	});

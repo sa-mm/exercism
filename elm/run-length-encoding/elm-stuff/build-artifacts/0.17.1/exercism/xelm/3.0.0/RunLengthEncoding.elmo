@@ -1,0 +1,87 @@
+var _exercism$xelm$RunLengthEncoding$myStringToInt = function (str) {
+	return A2(
+		_elm_lang$core$Result$withDefault,
+		1,
+		_elm_lang$core$String$toInt(str));
+};
+var _exercism$xelm$RunLengthEncoding$buildIt = F2(
+	function (list, countStr) {
+		buildIt:
+		while (true) {
+			var _p0 = list;
+			if (_p0.ctor === '[]') {
+				return list;
+			} else {
+				var _p2 = _p0._1;
+				var _p1 = _p0._0;
+				if (_elm_lang$core$Basics$not(
+					A2(_elm_lang$core$String$all, _elm_lang$core$Char$isDigit, _p1))) {
+					return A2(
+						_elm_lang$core$List_ops['::'],
+						A2(
+							_elm_lang$core$String$repeat,
+							_exercism$xelm$RunLengthEncoding$myStringToInt(countStr),
+							_p1),
+						A2(_exercism$xelm$RunLengthEncoding$buildIt, _p2, ''));
+				} else {
+					var _v1 = _p2,
+						_v2 = A2(_elm_lang$core$Basics_ops['++'], countStr, _p1);
+					list = _v1;
+					countStr = _v2;
+					continue buildIt;
+				}
+			}
+		}
+	});
+var _exercism$xelm$RunLengthEncoding$countEmUp = F2(
+	function (list, count) {
+		countEmUp:
+		while (true) {
+			var _p3 = list;
+			if (_p3.ctor === '[]') {
+				return list;
+			} else {
+				var _p5 = _p3._1;
+				var _p4 = _p3._0;
+				if (_elm_lang$core$Native_Utils.eq(
+					_elm_lang$core$Maybe$Just(_p4),
+					_elm_lang$core$List$head(_p5))) {
+					var _v4 = _p5,
+						_v5 = count + 1;
+					list = _v4;
+					count = _v5;
+					continue countEmUp;
+				} else {
+					if (_elm_lang$core$Native_Utils.cmp(count, 1) > 0) {
+						return A2(
+							_elm_lang$core$List_ops['::'],
+							_elm_lang$core$Basics$toString(count),
+							A2(
+								_elm_lang$core$List_ops['::'],
+								_p4,
+								A2(_exercism$xelm$RunLengthEncoding$countEmUp, _p5, 1)));
+					} else {
+						return A2(
+							_elm_lang$core$List_ops['::'],
+							_p4,
+							A2(_exercism$xelm$RunLengthEncoding$countEmUp, _p5, 1));
+					}
+				}
+			}
+		}
+	});
+var _exercism$xelm$RunLengthEncoding$decode = function (str) {
+	var list = A2(_elm_lang$core$String$split, '', str);
+	return A2(
+		_elm_lang$core$String$join,
+		'',
+		A2(_exercism$xelm$RunLengthEncoding$buildIt, list, ''));
+};
+var _exercism$xelm$RunLengthEncoding$encode = function (str) {
+	var list = A2(_elm_lang$core$String$split, '', str);
+	return A2(
+		_elm_lang$core$String$join,
+		'',
+		A2(_exercism$xelm$RunLengthEncoding$countEmUp, list, 1));
+};
+var _exercism$xelm$RunLengthEncoding$version = 2;

@@ -1,0 +1,47 @@
+var _exercism$xelm$Anagram$sortString = function (str) {
+	return A2(
+		_elm_lang$core$String$join,
+		'',
+		_elm_lang$core$List$sort(
+			A2(
+				_elm_lang$core$String$split,
+				'',
+				_elm_lang$core$String$toUpper(str))));
+};
+var _exercism$xelm$Anagram$detect = F2(
+	function (word, list) {
+		detect:
+		while (true) {
+			var _p0 = list;
+			if (_p0.ctor === '[]') {
+				return list;
+			} else {
+				var _p2 = _p0._1;
+				var _p1 = _p0._0;
+				if (_elm_lang$core$Native_Utils.eq(
+					_elm_lang$core$String$toUpper(_p1),
+					_elm_lang$core$String$toUpper(word))) {
+					var _v1 = word,
+						_v2 = _p2;
+					word = _v1;
+					list = _v2;
+					continue detect;
+				} else {
+					if (_elm_lang$core$Native_Utils.eq(
+						_exercism$xelm$Anagram$sortString(_p1),
+						_exercism$xelm$Anagram$sortString(word))) {
+						return A2(
+							_elm_lang$core$List_ops['::'],
+							_p1,
+							A2(_exercism$xelm$Anagram$detect, word, _p2));
+					} else {
+						var _v3 = word,
+							_v4 = _p2;
+						word = _v3;
+						list = _v4;
+						continue detect;
+					}
+				}
+			}
+		}
+	});

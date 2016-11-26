@@ -1,0 +1,34 @@
+var _exercism$xelm$Bob$isSilent = function (statement) {
+	return _elm_lang$core$String$isEmpty(
+		_elm_lang$core$String$trim(statement));
+};
+var _exercism$xelm$Bob$isShout = function (statement) {
+	return _elm_lang$core$Native_Utils.eq(
+		_elm_lang$core$String$toUpper(statement),
+		statement) && (!_elm_lang$core$Native_Utils.eq(
+		_elm_lang$core$String$toLower(statement),
+		statement));
+};
+var _exercism$xelm$Bob$isQuestion = function (statement) {
+	return A2(_elm_lang$core$String$endsWith, '?', statement);
+};
+var _exercism$xelm$Bob$Neutral = {ctor: 'Neutral'};
+var _exercism$xelm$Bob$Silence = {ctor: 'Silence'};
+var _exercism$xelm$Bob$Shouting = {ctor: 'Shouting'};
+var _exercism$xelm$Bob$Questioning = {ctor: 'Questioning'};
+var _exercism$xelm$Bob$examine = function (statement) {
+	return _exercism$xelm$Bob$isShout(statement) ? _exercism$xelm$Bob$Shouting : (_exercism$xelm$Bob$isQuestion(statement) ? _exercism$xelm$Bob$Questioning : (_exercism$xelm$Bob$isSilent(statement) ? _exercism$xelm$Bob$Silence : _exercism$xelm$Bob$Neutral));
+};
+var _exercism$xelm$Bob$hey = function (statement) {
+	var _p0 = _exercism$xelm$Bob$examine(statement);
+	switch (_p0.ctor) {
+		case 'Questioning':
+			return 'Sure.';
+		case 'Shouting':
+			return 'Whoa, chill out!';
+		case 'Silence':
+			return 'Fine. Be that way!';
+		default:
+			return 'Whatever.';
+	}
+};

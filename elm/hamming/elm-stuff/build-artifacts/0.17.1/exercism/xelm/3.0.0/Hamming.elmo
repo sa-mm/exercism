@@ -1,0 +1,25 @@
+var _exercism$xelm$Hamming$distance = F2(
+	function (str1, str2) {
+		var _p0 = !_elm_lang$core$Native_Utils.eq(
+			_elm_lang$core$String$length(str1),
+			_elm_lang$core$String$length(str2));
+		if (_p0 === true) {
+			return _elm_lang$core$Maybe$Nothing;
+		} else {
+			return _elm_lang$core$Maybe$Just(
+				_elm_lang$core$List$sum(
+					A2(
+						_elm_lang$core$List$map,
+						function (same) {
+							return same ? 0 : 1;
+						},
+						A3(
+							_elm_lang$core$List$map2,
+							F2(
+								function (x, y) {
+									return _elm_lang$core$Native_Utils.eq(x, y);
+								}),
+							_elm_lang$core$String$toList(str1),
+							_elm_lang$core$String$toList(str2)))));
+		}
+	});

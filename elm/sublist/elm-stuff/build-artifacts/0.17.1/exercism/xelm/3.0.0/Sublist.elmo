@@ -1,0 +1,9 @@
+var _exercism$xelm$Sublist$version = 2;
+var _exercism$xelm$Sublist$Unequal = {ctor: 'Unequal'};
+var _exercism$xelm$Sublist$Superlist = {ctor: 'Superlist'};
+var _exercism$xelm$Sublist$Sublist = {ctor: 'Sublist'};
+var _exercism$xelm$Sublist$Equal = {ctor: 'Equal'};
+var _exercism$xelm$Sublist$sublist = F2(
+	function (listA, listB) {
+		return _elm_lang$core$Native_Utils.eq(listA, listB) ? _exercism$xelm$Sublist$Equal : _exercism$xelm$Sublist$Sublist;
+	});

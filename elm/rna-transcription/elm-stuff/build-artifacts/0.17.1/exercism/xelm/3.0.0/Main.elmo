@@ -1,0 +1,87 @@
+var _exercism$xelm$Main$tests = A2(
+	_elm_community$elm_test$Test$describe,
+	'RNATranscription',
+	_elm_lang$core$Native_List.fromArray(
+		[
+			A2(
+			_elm_community$elm_test$Test$test,
+			'complement of cytosine is guanine',
+			function (_p0) {
+				var _p1 = _p0;
+				return A2(
+					_elm_community$elm_test$Expect$equal,
+					_elm_lang$core$Result$Ok('G'),
+					_exercism$xelm$RNATranscription$toRNA('C'));
+			}),
+			A2(
+			_elm_community$elm_test$Test$test,
+			'complement of guanine is cytosine',
+			function (_p2) {
+				var _p3 = _p2;
+				return A2(
+					_elm_community$elm_test$Expect$equal,
+					_elm_lang$core$Result$Ok('C'),
+					_exercism$xelm$RNATranscription$toRNA('G'));
+			}),
+			A2(
+			_elm_community$elm_test$Test$test,
+			'complement of thymine is adenine',
+			function (_p4) {
+				var _p5 = _p4;
+				return A2(
+					_elm_community$elm_test$Expect$equal,
+					_elm_lang$core$Result$Ok('A'),
+					_exercism$xelm$RNATranscription$toRNA('T'));
+			}),
+			A2(
+			_elm_community$elm_test$Test$test,
+			'complement of adenine is uracil',
+			function (_p6) {
+				var _p7 = _p6;
+				return A2(
+					_elm_community$elm_test$Expect$equal,
+					_elm_lang$core$Result$Ok('U'),
+					_exercism$xelm$RNATranscription$toRNA('A'));
+			}),
+			A2(
+			_elm_community$elm_test$Test$test,
+			'complement',
+			function (_p8) {
+				var _p9 = _p8;
+				return A2(
+					_elm_community$elm_test$Expect$equal,
+					_elm_lang$core$Result$Ok('UGCACCAGAAUU'),
+					_exercism$xelm$RNATranscription$toRNA('ACGTGGTCTTAA'));
+			}),
+			A2(
+			_elm_community$elm_test$Test$test,
+			'correctly handles completely invalid input',
+			function (_p10) {
+				var _p11 = _p10;
+				return A2(
+					_elm_community$elm_test$Expect$equal,
+					_elm_lang$core$Result$Err(
+						_elm_lang$core$Native_Utils.chr('X')),
+					_exercism$xelm$RNATranscription$toRNA('XXX'));
+			}),
+			A2(
+			_elm_community$elm_test$Test$test,
+			'correctly handles partially invalid input',
+			function (_p12) {
+				var _p13 = _p12;
+				return A2(
+					_elm_community$elm_test$Expect$equal,
+					_elm_lang$core$Result$Err(
+						_elm_lang$core$Native_Utils.chr('U')),
+					_exercism$xelm$RNATranscription$toRNA('UGAAXXXGACAUG'));
+			})
+		]));
+var _exercism$xelm$Main$emit = _elm_lang$core$Native_Platform.outgoingPort(
+	'emit',
+	function (v) {
+		return [v._0, v._1];
+	});
+var _exercism$xelm$Main$main = {
+	main: A2(_rtfeldman$node_test_runner$Test_Runner_Node$run, _exercism$xelm$Main$emit, _exercism$xelm$Main$tests),
+	flags: _elm_lang$core$Json_Decode$value
+};

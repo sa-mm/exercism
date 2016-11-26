@@ -1,0 +1,44 @@
+var _exercism$xelm$RNATranscription$lookupRNA = _elm_lang$core$Dict$fromList(
+	_elm_lang$core$Native_List.fromArray(
+		[
+			{
+			ctor: '_Tuple2',
+			_0: _elm_lang$core$Native_Utils.chr('C'),
+			_1: 'G'
+		},
+			{
+			ctor: '_Tuple2',
+			_0: _elm_lang$core$Native_Utils.chr('G'),
+			_1: 'C'
+		},
+			{
+			ctor: '_Tuple2',
+			_0: _elm_lang$core$Native_Utils.chr('T'),
+			_1: 'A'
+		},
+			{
+			ctor: '_Tuple2',
+			_0: _elm_lang$core$Native_Utils.chr('A'),
+			_1: 'U'
+		}
+		]));
+var _exercism$xelm$RNATranscription$toRNA = function (strand) {
+	var _p0 = _elm_lang$core$String$uncons(strand);
+	if (_p0.ctor === 'Nothing') {
+		return _elm_lang$core$Result$Ok('');
+	} else {
+		var _p3 = _p0._0._0;
+		var _p1 = A2(_elm_lang$core$Dict$get, _p3, _exercism$xelm$RNATranscription$lookupRNA);
+		if (_p1.ctor === 'Nothing') {
+			return _elm_lang$core$Result$Err(_p3);
+		} else {
+			var _p2 = _exercism$xelm$RNATranscription$toRNA(_p0._0._1);
+			if (_p2.ctor === 'Err') {
+				return _elm_lang$core$Result$Err(_p2._0);
+			} else {
+				return _elm_lang$core$Result$Ok(
+					A2(_elm_lang$core$Basics_ops['++'], _p1._0, _p2._0));
+			}
+		}
+	}
+};

@@ -1,0 +1,7 @@
+var _exercism$xelm$Repl$t_s_o_l = {ctor: '_Tuple0'};
+var _exercism$xelm$Repl$c = 4;
+var _exercism$xelm$Repl$b = 2;
+var _exercism$xelm$Repl$a = 1;
+var _exercism$xelm$Repl$list = _elm_lang$core$Native_List.fromArray(
+	[_exercism$xelm$Repl$a, _exercism$xelm$Repl$b, _exercism$xelm$Repl$c]);
+var _exercism$xelm$Repl$d_e_l_t_r_o_n_3_0_3_0 = _exercism$xelm$Repl$list;

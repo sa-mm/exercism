@@ -1,0 +1,42 @@
+var _exercism$xelm$Triangle$isScalene = F3(
+	function (a, b, c) {
+		return (!_elm_lang$core$Native_Utils.eq(a, b)) && ((!_elm_lang$core$Native_Utils.eq(a, c)) && (!_elm_lang$core$Native_Utils.eq(b, c)));
+	});
+var _exercism$xelm$Triangle$isIsosceles = F3(
+	function (a, b, c) {
+		return _elm_lang$core$Native_Utils.eq(a, b) || (_elm_lang$core$Native_Utils.eq(a, c) || _elm_lang$core$Native_Utils.eq(b, c));
+	});
+var _exercism$xelm$Triangle$isEquilateral = F3(
+	function (a, b, c) {
+		return _elm_lang$core$Native_Utils.eq(a, b) && _elm_lang$core$Native_Utils.eq(a, c);
+	});
+var _exercism$xelm$Triangle$checkSides = function (list) {
+	var _p0 = list;
+	if (_p0.ctor === '::') {
+		return _elm_lang$core$Native_Utils.cmp(
+			_p0._0,
+			_elm_lang$core$List$sum(_p0._1)) > -1;
+	} else {
+		return false;
+	}
+};
+var _exercism$xelm$Triangle$violatesInequality = F3(
+	function (a, b, c) {
+		return _exercism$xelm$Triangle$checkSides(
+			_elm_lang$core$List$reverse(
+				_elm_lang$core$List$sort(
+					_elm_lang$core$Native_List.fromArray(
+						[a, b, c]))));
+	});
+var _exercism$xelm$Triangle$invalidLengths = F3(
+	function (a, b, c) {
+		return (_elm_lang$core$Native_Utils.cmp(a, 0) < 1) || ((_elm_lang$core$Native_Utils.cmp(b, 0) < 1) || (_elm_lang$core$Native_Utils.cmp(c, 0) < 1));
+	});
+var _exercism$xelm$Triangle$version = 2;
+var _exercism$xelm$Triangle$Isosceles = {ctor: 'Isosceles'};
+var _exercism$xelm$Triangle$Scalene = {ctor: 'Scalene'};
+var _exercism$xelm$Triangle$Equilateral = {ctor: 'Equilateral'};
+var _exercism$xelm$Triangle$triangleKind = F3(
+	function (a, b, c) {
+		return A3(_exercism$xelm$Triangle$invalidLengths, a, b, c) ? _elm_lang$core$Result$Err('Invalid lengths') : (A3(_exercism$xelm$Triangle$violatesInequality, a, b, c) ? _elm_lang$core$Result$Err('Violates inequality') : (A3(_exercism$xelm$Triangle$isEquilateral, a, b, c) ? _elm_lang$core$Result$Ok(_exercism$xelm$Triangle$Equilateral) : (A3(_exercism$xelm$Triangle$isIsosceles, a, b, c) ? _elm_lang$core$Result$Ok(_exercism$xelm$Triangle$Isosceles) : (A3(_exercism$xelm$Triangle$isScalene, a, b, c) ? _elm_lang$core$Result$Ok(_exercism$xelm$Triangle$Scalene) : _elm_lang$core$Result$Err('Something went wrong.')))));
+	});

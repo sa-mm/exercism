@@ -1,0 +1,5 @@
+var _exercism$xelm$Repl$xs = _elm_lang$core$Native_List.fromArray(
+	['2', 'W', 'B']);
+var _exercism$xelm$Repl$t_s_o_l = {ctor: '_Tuple0'};
+var _exercism$xelm$Repl$d_e_l_t_r_o_n_3_0_3_0 = _exercism$xelm$RunLengthEncoding$decode('12A3BD');
+var _exercism$xelm$Repl$countStr = '';
