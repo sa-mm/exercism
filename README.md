@@ -1,0 +1,1 @@
+These are my solutions to some [Exercism.io](http://exercism.io) exercises.
