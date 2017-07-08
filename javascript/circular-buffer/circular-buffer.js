@@ -3,7 +3,7 @@ var circularBuffer = function (length) {
   var length = length
 
   var isEmpty = function (buffer) {
-    return buffer.every(e => e === null)
+    return buffer.every(e => e === undefined)
   }
 
   var isFull = function (buffer) {
