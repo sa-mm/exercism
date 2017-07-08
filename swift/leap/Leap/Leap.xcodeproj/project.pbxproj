@@ -10,7 +10,8 @@
 		8C3E44381E313DA300AB7B2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E44371E313DA300AB7B2C /* AppDelegate.swift */; };
 		8C3E443A1E313DA300AB7B2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C3E44391E313DA300AB7B2C /* Assets.xcassets */; };
 		8C3E443D1E313DA300AB7B2C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C3E443B1E313DA300AB7B2C /* MainMenu.xib */; };
-		8C3E44481E313DA300AB7B2C /* LeapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E44471E313DA300AB7B2C /* LeapTests.swift */; };
+		8C3E44551E313DCE00AB7B2C /* Leap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E44541E313DCE00AB7B2C /* Leap.swift */; };
+		8C3E44571E313DDE00AB7B2C /* LeapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E44561E313DDE00AB7B2C /* LeapTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,8 +31,10 @@
 		8C3E443C1E313DA300AB7B2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8C3E443E1E313DA300AB7B2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C3E44431E313DA300AB7B2C /* LeapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C3E44471E313DA300AB7B2C /* LeapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeapTests.swift; sourceTree = "<group>"; };
 		8C3E44491E313DA300AB7B2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C3E44531E313DC200AB7B2C /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		8C3E44541E313DCE00AB7B2C /* Leap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leap.swift; sourceTree = "<group>"; };
+		8C3E44561E313DDE00AB7B2C /* LeapTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeapTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +58,7 @@
 		8C3E442B1E313DA300AB7B2C = {
 			isa = PBXGroup;
 			children = (
+				8C3E44531E313DC200AB7B2C /* MyPlayground.playground */,
 				8C3E44361E313DA300AB7B2C /* Leap */,
 				8C3E44461E313DA300AB7B2C /* LeapTests */,
 				8C3E44351E313DA300AB7B2C /* Products */,
@@ -73,10 +77,9 @@
 		8C3E44361E313DA300AB7B2C /* Leap */ = {
 			isa = PBXGroup;
 			children = (
-				8C3E44371E313DA300AB7B2C /* AppDelegate.swift */,
-				8C3E44391E313DA300AB7B2C /* Assets.xcassets */,
-				8C3E443B1E313DA300AB7B2C /* MainMenu.xib */,
+				8C3E44521E313DB000AB7B2C /* Support */,
 				8C3E443E1E313DA300AB7B2C /* Info.plist */,
+				8C3E44541E313DCE00AB7B2C /* Leap.swift */,
 			);
 			path = Leap;
 			sourceTree = "<group>";
@@ -84,10 +87,20 @@
 		8C3E44461E313DA300AB7B2C /* LeapTests */ = {
 			isa = PBXGroup;
 			children = (
-				8C3E44471E313DA300AB7B2C /* LeapTests.swift */,
+				8C3E44561E313DDE00AB7B2C /* LeapTest.swift */,
 				8C3E44491E313DA300AB7B2C /* Info.plist */,
 			);
 			path = LeapTests;
+			sourceTree = "<group>";
+		};
+		8C3E44521E313DB000AB7B2C /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				8C3E44371E313DA300AB7B2C /* AppDelegate.swift */,
+				8C3E44391E313DA300AB7B2C /* Assets.xcassets */,
+				8C3E443B1E313DA300AB7B2C /* MainMenu.xib */,
+			);
+			name = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +157,7 @@
 					};
 					8C3E44421E313DA300AB7B2C = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 8C3E44331E313DA300AB7B2C;
 					};
@@ -193,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C3E44381E313DA300AB7B2C /* AppDelegate.swift in Sources */,
+				8C3E44551E313DCE00AB7B2C /* Leap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C3E44481E313DA300AB7B2C /* LeapTests.swift in Sources */,
+				8C3E44571E313DDE00AB7B2C /* LeapTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,11 +362,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = LeapTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.freddie.LeapTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Leap.app/Contents/MacOS/Leap";
 			};
@@ -362,6 +379,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = LeapTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";

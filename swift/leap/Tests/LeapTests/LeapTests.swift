@@ -1,10 +1,7 @@
-#if swift(>=3.0)
-    import XCTest
-#endif
-
+import XCTest
 @testable import Leap
 
-class LeapTest: XCTestCase {
+class LeapTests: XCTestCase {
 
     func testVanillaLeapYear() {
         let year = Year(calendarYear: 1996)
@@ -26,4 +23,12 @@ class LeapTest: XCTestCase {
         XCTAssertTrue(year.isLeapYear)
     }
 
+    static var allTests: [(String, (LeapTests) -> () throws -> Void)] {
+        return [
+            ("testVanillaLeapYear", testVanillaLeapYear),
+            ("testAnyOldYear", testAnyOldYear),
+            ("testCentury", testCentury),
+            ("testExceptionalCentury", testExceptionalCentury),
+        ]
+    }
 }
