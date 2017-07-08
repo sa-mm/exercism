@@ -1,20 +1,38 @@
-var School = function() {
-  this.database = {};
-};
-
-School.prototype.roster = function() {
-  return this.database;
+var School = function () {
+  this.database = {}
 }
 
-School.prototype.add = function(name,grade) {
-  var db = this.database;
-  db[grade] ? db[grade].push(name) : db[grade] = [name];
-  return db[grade].sort();
+School.prototype.roster = function () {
+  // last test wants this to return a sorted database
+  // Odd to be sorting an object?
+  var db = this.database
+  var grades = Object.keys(db).sort()
+
+  var sortedDB = grades.reduce((acc, grade) => {
+    acc[grade] = db[grade].sort()
+    return acc
+  }, {})
+
+  this.database = sortedDB
+  return db
 }
 
-School.prototype.grade = function(grade) {
-  var students = this.database[grade];
-  return students ? students : [];
+School.prototype.add = function (name, grade) {
+  var db = this.database
+
+  // if grade doesn't exist in db
+  // create an empty array for it
+  if (!db[grade]) {
+    db[grade] = []
+  }
+
+  db[grade].push(name)
 }
 
-module.exports = School;
+School.prototype.grade = function (grade) {
+  var db = this.database
+
+  return db[grade] ? db[grade].sort() : []
+}
+
+module.exports = School
