@@ -1,68 +1,39 @@
 var circularBuffer = function (length) {
-  var buffer = [];
-  // buffer.length = length;
-  // Object.freeze(buffer.length); //
-  var readCount = 0;
-  var writeCount = 0;
+  var buffer = new Array(length)
+
+  var isEmpty = function (buffer) {
+    return buffer.every(e => e === null)
+  }
 
   var read = function () {
-    // readCount++;
-    if (isEmpty(buffer) || readCount >= length) {
-      throw bufferEmptyException;
-    }
-
-    ///find first thing that is NOT undefined and remove it.
-    readCount++;
-    var item = buffer[0];
-    buffer.shift();
-    return item;
+    if (isEmpty(buffer)) throw bufferEmptyException()
+    var out = buffer.shift()
+    return out
   }
 
-  var write = function (str) {
-    if (writeCount >= length) {
-      throw bufferFullException;
-    }
-    if (str !== null && str !== undefined) {
-      buffer[writeCount] = str;
-      writeCount++;
-    }
-  }
-
-  var forceWrite = function (str) {
-    // if (writeCount >= buffer.length) {
-    //   buffer.shift();
-    //   buffer.unshift('A');
-    //   buffer.reverse();
-    // } else {
-    //   write(str);
-    // }
-  }
-
-  var clear = function () {
-    buffer = [];
-    // buffer.length = length;
-    readCount = 0;
-    writeCount = 0;
+  var write = function (e) {
+    buffer.push(e)
   }
 
   return {
-    'write': write,
-    'read': read,
-    'forceWrite': forceWrite,
-    'clear': clear
+    read,
+    write
   }
 }
 
-var isEmpty = function (arr) {
-  var result = true;
-  for (n in arr) {
-    if (n !== undefined) {
-      result = false;
-    }
-  }
-  return result;
+var bufferEmptyException = function () {
+  return 'The buffer is empty.'
 }
 
-exports.circularBuffer = circularBuffer;
-exports.bufferEmptyException = function () { };
-exports.bufferFullException = function () { };
+var bufferFullException = function () {
+  return 'The buffer is full.'
+}
+
+exports.circularBuffer = circularBuffer
+exports.bufferEmptyException = bufferEmptyException
+exports.bufferFullException = bufferFullException
+
+var buffer = circularBuffer(1)
+buffer.write('1')
+// buffer.read()
+// out
