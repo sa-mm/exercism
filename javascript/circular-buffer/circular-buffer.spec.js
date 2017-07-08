@@ -45,7 +45,7 @@ describe('CircularBuffer', function() {
     expect(buffer.read()).toBe('2');
   });
 
-  xit('reads back oldest item', function() {
+  it('reads back oldest item', function() {
     var buffer = circularBuffer(3);
     buffer.write('1');
     buffer.write('2');
@@ -55,7 +55,7 @@ describe('CircularBuffer', function() {
     expect(buffer.read()).toBe('3');
   });
 
-  xit('writes of undefined or null don\'t occupy buffer', function() {
+  it('writes of undefined or null don\'t occupy buffer', function() {
     var buffer = circularBuffer(3);
     buffer.write(null);
     buffer.write(undefined);
@@ -63,7 +63,7 @@ describe('CircularBuffer', function() {
     expect(buffer.read()).toBe('1');
   });
 
-  xit('writing to a full buffer throws a BufferFullException', function() {
+  it('writing to a full buffer throws a BufferFullException', function() {
     var buffer = circularBuffer(2);
     buffer.write('1');
     buffer.write('2');
@@ -72,7 +72,7 @@ describe('CircularBuffer', function() {
     }).toThrow(bufferFullException());
   });
 
-  xit('forced writes over write oldest item in a full buffer', function() {
+  it('forced writes over write oldest item in a full buffer', function() {
     var buffer = circularBuffer(2);
     buffer.write('1');
     buffer.write('2');
@@ -82,7 +82,7 @@ describe('CircularBuffer', function() {
     expect(buffer.read).toThrow(bufferEmptyException());
   });
 
-  xit('forced writes act like write in a non-full buffer', function() {
+  it('forced writes act like write in a non-full buffer', function() {
     var buffer = circularBuffer(2);
     buffer.write('1');
     buffer.forceWrite('2');
@@ -91,7 +91,7 @@ describe('CircularBuffer', function() {
     expect(buffer.read).toThrow(bufferEmptyException());
   });
 
-  xit('alternate force write and read into full buffer', function() {
+  it('alternate force write and read into full buffer', function() {
     var buffer = circularBuffer(5);
     [1,2,3].map(function(i) { buffer.write(i.toString()); });
     buffer.read();
@@ -99,14 +99,14 @@ describe('CircularBuffer', function() {
     buffer.write('4');
     buffer.read();
     [5,6,7,8].map(function(i) { buffer.write(i.toString()); });
-    // buffer.forceWrite('A');
-    // buffer.forceWrite('B');
-    // expect(buffer.read()).toBe('6');
-    // expect(buffer.read()).toBe('7');
-    // expect(buffer.read()).toBe('8');
-    // expect(buffer.read()).toBe('A');
-    // expect(buffer.read()).toBe('B');
-    // expect(buffer.read).toThrow(bufferEmptyException());
+    buffer.forceWrite('A');
+    buffer.forceWrite('B');
+    expect(buffer.read()).toBe('6');
+    expect(buffer.read()).toBe('7');
+    expect(buffer.read()).toBe('8');
+    expect(buffer.read()).toBe('A');
+    expect(buffer.read()).toBe('B');
+    expect(buffer.read).toThrow(bufferEmptyException());
   });
 
 });
