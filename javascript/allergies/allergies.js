@@ -12,6 +12,8 @@ var Allergies = function (score) {
   }
   this.baseScores = Object.keys(this.database).map(e => +e)
 
+  // generate scores up to the score given as a parameter
+  // Necessary in order to get all possible combinations
   const generate = (stop, i = 1, acc = []) => {
     if (i >= stop) return acc.concat(i)
 
@@ -19,8 +21,9 @@ var Allergies = function (score) {
   }
 
   const generatedScores = generate(score)
-  
+
   // adapted from https://codereview.stackexchange.com/a/7025
+  // Get all possible combinations of given array
   const combinations = arr => {
     const fn = function (active, rest, acc) {
       if (active.length === 0 && rest.length === 0) return
@@ -36,10 +39,11 @@ var Allergies = function (score) {
   }
 
   const allCombinations = combinations(generatedScores)
-  const sum = (a, b) => a + b
+
   // sumCombos is a bunch of k/v pairs
   // The keys are the sum of the items in the arr
   // { '1': [1], '2': [2], '3': [1, 2]}
+  const sum = (a, b) => a + b
   const sumCombos = allCombinations.reduce((acc, arr) => {
     const theSum = arr.reduce(sum)
     acc[theSum] = arr
