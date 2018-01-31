@@ -15,7 +15,7 @@ var _for = function (n) {
     n = n / possibleFactor
     return recurse(n, possibleFactor, acc)
   }
-  var factors = []
+  let factors = []
   let possibleFactor = 2
   while (possibleFactor <= n) {
     // I'm not sure that recursion makes this
