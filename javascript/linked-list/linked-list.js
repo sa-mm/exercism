@@ -1,6 +1,7 @@
 const Node = function(data) {
   this.data = data;
   this.next = null;
+  this.prev = null;
 };
 
 const LinkedList = function() {
@@ -17,8 +18,10 @@ LinkedList.prototype.push = function(data) {
   } else {
     let current = this.head;
     while (current.next) {
+      previous = current;
       current = current.next;
     }
+    node.prev = current;
     current.next = node;
     this._count++;
   }
@@ -26,14 +29,21 @@ LinkedList.prototype.push = function(data) {
 
 LinkedList.prototype.pop = function() {
   let current = this.head;
-  let previous = {};
-  while (current.next) {
-    previous = current;
-    current = current.next;
+  let data;
+  if (!current.next) {
+    data = current.data;
+    current = null;
+    this._count--;
+    return data;
+  } else {
+    while (current.next) {
+      current = current.next;
+    }
+    data = current.data;
+    current.prev.next = null;
+    this._count--;
+    return data;
   }
-  previous.next = null;
-  this._count--;
-  return current.data;
 };
 
 LinkedList.prototype.shift = function() {
@@ -48,7 +58,9 @@ LinkedList.prototype.unshift = function(data) {
   if (!this.head) {
     this.head = node;
   } else {
-    node.next = { ...this.head };
+    const next = this.head;
+    next.prev = node;
+    node.next = next;
     this.head = node;
   }
   this._count++;
@@ -59,31 +71,20 @@ LinkedList.prototype.count = function() {
 };
 
 LinkedList.prototype.delete = function(item) {
-  // const traverse = (node, item, list = new LinkedList()) => {
-  //   const { data, next } = node;
-  //   if (data !== item) list.push(data);
-  //   if (!next) {
-  //     return list;
-  //   } else {
-  //     return traverse(next, item, list);
-  //   }
-  // };
-  // const newList = traverse(this.head, item);
-
-  // this.head = newList.head;
-  // this.count = () => newList.count();
-
-  let current = this.head;
-  const list = new LinkedList();
-  while (current.next) {
-    if (current.data !== item) list.push(current.data);
-    current = current.next;
+  if (!this.head.next && this.head.data === item) {
+    this.head = null;
+    this._count--;
+  } else {
+    let current = this.head;
+    while (current.next) {
+      if (current.data === item) {
+        current.prev.next = current.next;
+        current.next.prev = current.prev;
+        this._count--;
+      }
+      current = current.next;
+    }
   }
-
-  if (current.data !== item) list.push(current.data);
-
-  this.head = list.head;
-  this.count = () => list.count();
 };
 
 module.exports = LinkedList;
